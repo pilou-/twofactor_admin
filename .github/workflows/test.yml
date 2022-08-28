@@ -20,7 +20,7 @@ jobs:
     name: php${{ matrix.php-versions }}-${{ matrix.databases }} on ${{ matrix.nextcloud-versions }}
     steps:
       - name: Checkout server
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: nextcloud/server
           ref: ${{ matrix.server-versions }}
@@ -31,7 +31,7 @@ jobs:
           git submodule sync --recursive
           git -c "http.extraheader=$auth_header" -c protocol.version=2 submodule update --init --force --recursive --depth=1
       - name: Checkout app
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           path: apps/${{ env.APP_NAME }}
       - name: Set up php${{ matrix.php-versions }}
@@ -74,7 +74,7 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval 5s --health-timeout 2s --health-retries 5
     steps:
       - name: Checkout server
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: nextcloud/server
           ref: ${{ matrix.server-versions }}
@@ -85,7 +85,7 @@ jobs:
           git submodule sync --recursive
           git -c "http.extraheader=$auth_header" -c protocol.version=2 submodule update --init --force --recursive --depth=1
       - name: Checkout app
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           path: apps/${{ env.APP_NAME }}
       - name: Set up php${{ matrix.php-versions }}
