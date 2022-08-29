@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-versions: ['7.3', '7.4', '8.0']
+        php-versions: ['7.3', '7.4', '8.0', '8.1']
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Set up php${{ matrix.php-versions }}
         uses: shivammathur/setup-php@v2
         with:
@@ -27,13 +27,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Set up node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: 14
-      - name: Set up npm7
-        run: npm i -g npm@7
+          node-version: 16
       - name: Install dependencies
         run: npm ci
       - name: Lint
@@ -43,13 +41,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Set up node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: 14
-      - name: Set up npm7
-        run: npm i -g npm@7
+          node-version: 16
       - name: Install dependencies
         run: npm ci
       - name: Lint
@@ -59,7 +55,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Download schema
         run: wget https://apps.nextcloud.com/schema/apps/info.xsd
       - name: Lint info.xml
